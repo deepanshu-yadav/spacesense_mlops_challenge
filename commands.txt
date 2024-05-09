@@ -2,3 +2,13 @@ uvicorn server:app --host 0.0.0.0 --port 8000
 
 curl -L -F "file=@resources/dog.jpg" http://127.0.0.1:8000/segmentation -o "test.png"
 
+docker build -t imageseg  .
+
+docker container run -d   -p 8000:8000 imageseg
+
+docker tag imageseg  pronoob007/spacesense-image-seg:latest
+
+docker push  pronoob007/spacesense-image-seg:latest
+
+pronoob007/spacesense-image-seg:latest
+
