@@ -60,17 +60,15 @@ def segment_everything(
 
 app = FastAPI(
     title="DeepLabV3 image segmentation",
-    description="""Obtain semantic segmentation maps of the image in input via DeepLabV3 implemented in PyTorch.
-                           Visit this URL at port 8501 for the streamlit interface.""",
+    description="""Obtain semantic segmentation maps of the image in input via MobileSAM.
+                           """,
     version="0.1.0",
 )
 
-print("done..")
 
 @app.post("/segmentation")
 def get_segmentation_map(file: bytes = File(...)):
     """Get segmentation maps from image file"""
-    print("yes")
     input_image = Image.open(io.BytesIO(file)).convert("RGB")
     segmented_image = segment_everything(input_image)
     bytes_io = io.BytesIO()
