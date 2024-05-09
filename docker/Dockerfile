@@ -2,9 +2,9 @@ FROM tiangolo/uvicorn-gunicorn:python3.9
 
 RUN mkdir /fastapi
 
-RUN git clone https://github.com/deepanshu-yadav/spacesense_mlops_challenge.git /tmp/repo
+RUN git clone https://github.com/deepanshu-yadav/spacesense_mlops_challenge.git .
 
-COPY /tmp/repo /fastapi
+COPY . /fastapi
 
 WORKDIR /fastapi
 
